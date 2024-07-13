@@ -1,0 +1,28 @@
+We try to reframe the problem by arranging them as a store of vectors with objects of Struct Type Robot that has four properties- Its original Index, position provided, Health value and Direction. We need to arrange them in ascending order based on the positions mentioned for it.
+
+VERY IMPORTANT — Lets say we do manage to get the vector of all robot objects but we still don’t have it sorted with us?? Can we really sort an array using struct properties?
+
+The idea of lambdas is to act as an additional filter for an already-processing function. In our code sample, we need to sort all robot objects in the array based on their positions provided.
+
+
+What does it mean??
+- Well, sort functions are used to sort a given array using its corresponding begin and end iterators. Its normal functionality would be to arrange elements of primitive data types in ascending order... But here we have a user-defined struct to sort around with.
+- [] -> It's the lambda introducer in C++.
+(const Robot& a, const Robot& b): These are the lambda's parameters.
+- They define the input to the lambda function. In this case, the lambda takes two parameters, a and b, both of type const Robot&. These parameters represent two elements from the container being sorted.
+- { ... }: This is the lambda's body, enclosed in curly braces. The code inside these braces defines the behavior of the lambda function.
+
+In our case, we basically are asking our lambda function to pass a boolean true to the sort function when this condition is satisfied or else false. this is used to sort our array/vector in ascending order.
+
+3. So far, you have actually completed 50% of your code. You have set an environment where you can imagine the robots placed in the corresponding positions and having their respective parameters.
+
+4. Condition — Keep pushing all the robots whose direction is to the right. As soon as you meet a robot moving to the left… We attempt eliminating bots like:
+
+a) It continues popping robots from the stack as long as the top robot’s health is less than or equal to the current robot’s health and its direction is ‘R’.
+b) If the health of the top robot is equal to the current robot’s health, that robot is also popped and marked as gone.
+c) If the health of the incoming robot is more than the top robot, then the top robot is removed and the incoming robot’s health is decreased by 1.
+
+If none of these cases pass, simply move forward by adding the robot to the eval array.
+
+5. Finally, we sort all the robots based on their indices using another lambda function and then push their corresponding health values in another vector array( in our case ‘result’ ) by moving over this eval vector iteratively and return this as the result.
+
